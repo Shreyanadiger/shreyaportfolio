@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shreya's Pixel Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.cdnfonts.com/css/press-start-2p" rel="stylesheet">
+</head>
+<body>
+  <!-- Background Stars -->
+  <div class="stars"></div>
+
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#" data-section="home">Home</a></li>
+        <li><a href="#" data-section="about">About</a></li>
+        <li><a href="#" data-section="skills">Skills</a></li>
+        <li><a href="#" data-section="projects">Projects</a></li>
+        <li><a href="#" data-section="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Sections -->
+  <main>
+    <!-- Home -->
+    <section id="home" class="section active">
+      <div class="left">
+        <h1><span>Shreya Nadiger</span></h1>
+        <p>Hi, a Computer Science student passionate about 
+        <span class="highlight">Web Development</span> & <span class="highlight">Creative Design</span>.</p>
+        <button class="btn" data-section="about">Explore More</button>
+      </div>
+      <div class="right">
+        <div class="pixel-card">
+          <img src="shreya_spirit.jpg" alt="Shreya Spirit">
+          <h2>Shreya</h2>
+          <div class="stats">
+            <div><span></span> Skills</div>
+            <div><span></span> Projects</div>
+            <div><span></span> contact</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section hidden">
+      <h2>About Me</h2>
+      <p>
+        I’m Shreya, a BE CSE student from Mysore.  
+        I enjoy mixing tech and art to make some creative projects.
+        My goal is to grow as a full-stack developer while working on creative projects.
+      </p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section hidden">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="skill-card">HTML</div>
+        <div class="skill-card">CSS</div>
+        <div class="skill-card">JavaScript</div>
+        <div class="skill-card">Java</div>
+        <div class="skill-card">React.js</div>
+        <div class="skill-card">pixcel art</div>
+        <div class="skill-card">Git and Github</div>
+        <div class="skill-card">python</div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section hidden">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="project-card">Portfolio Website</div>
+        <div class="project-card">Weather App</div>
+        <div class="project-card">E-commerce UI</div>
+      </div>
+    </section>
+
+
+    <!-- Contact -->
+<section id="contact" class="section hidden">
+  <h2>Contact Me</h2>
+  <p>Drop a message and let’s connect!</p>
+  <div class="socials">
+    <!-- Email -->
+    <a href="shreyavnadiger@gmail.com" title="Email">📧</a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/shreyanadiger/" target="_blank" title="LinkedIn">💼</a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/Shreyanadiger" target="_blank" title="GitHub">🐱</a>
+  </div>
+</section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

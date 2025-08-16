@@ -1,0 +1,249 @@
+/* =========================
+   Pixel Neon Portfolio CSS
+   ========================= */
+
+/* Font */
+@import url('https://fonts.cdnfonts.com/css/press-start-2p');
+
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root{
+  --bg: #0d0b1e;
+  --panel: #1a1333;
+  --neon-green: #20e3b2;
+  --neon-purple: #b726ff;
+  --text: #ffffff;
+  --muted: #cfcfcf;
+  --border: rgba(255,255,255,0.08);
+  --shadow-green: 0 0 12px var(--neon-green);
+  --shadow-purple: 0 0 12px var(--neon-purple);
+}
+
+/* Base */
+html, body { height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Floating starfield background */
+.stars, .stars::before, .stars::after{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background-image:
+    radial-gradient(#fff 1px, transparent 1px),
+    radial-gradient(var(--neon-green) 1px, transparent 1px);
+  background-position: 0 0, 25px 25px;
+  background-size: 50px 50px;
+  opacity: .12;
+  animation: drift 45s linear infinite;
+}
+.stars::after{ animation-duration: 60s; opacity: .08; }
+@keyframes drift{ from{transform: translateY(0)} to{transform: translateY(-200px)} }
+
+/* =========================
+   Navigation
+   ========================= */
+header { padding: 18px 10px; position: sticky; top: 0; z-index: 10; }
+nav ul{
+  display: flex; justify-content: center; gap: 36px; list-style: none;
+  background: rgba(26,19,51,.6);
+  border: 2px solid var(--border);
+  padding: 14px 18px; border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+nav a{
+  color: var(--text); text-decoration: none; font-size: 12px;
+  transition: color .25s, text-shadow .25s;
+}
+nav a:hover{
+  color: var(--neon-green);
+  text-shadow: var(--shadow-green);
+}
+
+/* =========================
+   Sections (tab behavior)
+   ========================= */
+.section{
+  display: none; /* hidden by default; JS toggles .active */
+  padding: 80px 20px;
+  min-height: 80vh;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.section.active{ display: block; opacity: 1; }
+.section.hidden{ display:none; opacity:0; }
+
+.section h2{
+  font-size: 24px; margin-bottom: 22px; color: var(--neon-green);
+  text-shadow: var(--shadow-green);
+}
+.section p{
+  max-width: 700px; margin: 0 auto; color: var(--muted); font-size: 12px;
+}
+
+/* =========================
+   Home (two-column layout)
+   ========================= */
+#home.active{ display: flex; align-items: center; justify-content: space-between; padding: 0 10%; }
+#home .left{ width: 50%; text-align: left; }
+#home .right{ width: 40%; display: flex; justify-content: center; }
+
+#home .left h1{
+  font-size: 28px; line-height: 1.4; margin-bottom: 18px;
+  text-shadow: 0 0 8px rgba(255,255,255,.06);
+}
+#home .left span{ color: var(--neon-green); text-shadow: var(--shadow-green); }
+.highlight{ color: var(--neon-purple); text-shadow: var(--shadow-purple); }
+
+.btn{
+  display: inline-block; margin-top: 18px;
+  background: var(--neon-purple); color: #fff; border: 0;
+  padding: 12px 20px; border-radius: 10px; font-size: 12px; cursor: pointer;
+  box-shadow: var(--shadow-purple);
+  transition: background .25s, box-shadow .25s, transform .05s;
+}
+.btn:hover{ background: var(--neon-green); box-shadow: var(--shadow-green); }
+.btn:active{ transform: translateY(1px); }
+
+/* Pixel card with spirit */
+.pixel-card{
+  background: var(--panel);
+  border: 2px solid var(--neon-purple);
+  box-shadow: 0 0 20px var(--neon-purple);
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  width: clamp(240px, 80%, 420px);
+  animation: float 3s ease-in-out infinite;
+}
+.pixel-card img{
+  width: 220px; height: 220px; object-fit: cover;
+  image-rendering: pixelated;
+  border: 3px solid var(--neon-green);
+  box-shadow: var(--shadow-green);
+  margin-bottom: 14px;
+  background: #000;
+}
+.pixel-card h2{
+  font-size: 16px; color: var(--neon-green); margin-bottom: 12px;
+}
+.stats{
+  display: flex; justify-content: space-around; gap: 10px; margin-top: 10px;
+  font-size: 12px;
+}
+.stats div span{
+  display:block; color: var(--neon-purple); text-shadow: var(--shadow-purple); font-size: 16px;
+}
+@keyframes float{ 0%,100%{transform: translateY(0)} 50%{transform: translateY(-10px)} }
+
+/* =========================
+   Skills & Projects grids
+   ========================= */
+.grid{
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(140px,1fr));
+  gap: 18px;
+  justify-items: center;
+}
+.skill-card, .project-card{
+  width: 100%;
+  background: var(--panel);
+  border: 2px solid var(--neon-green);
+  color: var(--text);
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow-green);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.skill-card:hover, .project-card:hover{
+  transform: translateY(-4px);
+  border-color: var(--neon-purple);
+  box-shadow: var(--shadow-purple);
+}
+
+/* =========================
+   Contact
+   ========================= */
+.socials{
+  display:flex; justify-content:center; gap:22px; margin-top:18px;
+}
+.socials a{
+  color: var(--neon-purple); text-decoration:none; font-size: 18px;
+  transition: color .25s, text-shadow .25s, transform .1s;
+}
+.socials a:hover{ color: var(--neon-green); text-shadow: var(--shadow-green); }
+.socials a:active{ transform: scale(.98); }
+
+/* =========================
+   Responsive tweaks
+   ========================= */
+@media (max-width: 1024px){
+  #home.active{ padding: 40px 6%; }
+  .grid{ grid-template-columns: repeat(3, minmax(140px,1fr)); }
+}
+@media (max-width: 768px){
+  #home.active{ flex-direction: column; gap: 28px; text-align: center; }
+  #home .left, #home .right{ width: 100%; }
+  #home .left{ text-align: center; }
+  .grid{ grid-template-columns: repeat(2, minmax(140px,1fr)); }
+}
+@media (max-width: 480px){
+  nav ul{ gap: 16px; padding: 10px 12px; }
+  #home .left h1{ font-size: 22px; }
+  .pixel-card img{ width: 180px; height: 180px; }
+  .grid{ grid-template-columns: 1fr; }
+}
+#home .btn{
+    display: none;
+}
+
+/* Contact Section */
+#contact {
+  text-align: center;
+  position: relative;
+  z-index: 5; /* ensures above background */
+}
+
+.contact-icons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+.contact-link {
+  font-size: 3rem;
+  color: #00ffcc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 15;
+  cursor: pointer;
+}
+
+.contact-link i {
+  border: 3px solid #00ffcc;
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: 0 0 10px #00ffcc, 0 0 30px #00ffcc inset;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover i {
+  background: #00ffcc;
+  color: #0a0a0a;
+  transform: scale(1.2);
+  box-shadow: 0 0 20px #00ffcc, 0 0 60px #00ffcc;
+}
